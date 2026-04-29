@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -132,7 +133,7 @@ section { padding:5rem 2rem; }
 .dep-btn.active { background:linear-gradient(135deg,var(--gold-dark),var(--gold)); color:var(--navy); border-color:transparent; }
 
 /* SVG ANIMATION SCENE */
-.anim-stage { position:relative; height:220px; overflow:hidden; }
+.anim-stage { position:relative; overflow:visible; }
 .scene-bg {
   position:absolute; inset:0;
   display:flex; align-items:flex-end; justify-content:space-between;
@@ -407,6 +408,17 @@ footer { background:#060f1e; border-top:1px solid rgba(201,168,76,0.15); padding
         </div>
       </div>
 
+      <!-- CARTE VIDÉO -->
+      <div class="formation-card formation-card--video">
+        <div class="fc-body fc-body--video">
+          <video
+            src="vid%C3%A9os/vous_avez_quoi_faire.mp4"
+            controls playsinline
+            style="width:100%;height:100%;object-fit:cover;border-radius:12px;display:block;">
+          </video>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -426,64 +438,114 @@ footer { background:#060f1e; border-top:1px solid rgba(201,168,76,0.15); padding
       </div>
 
       <div class="anim-stage">
-        <div class="ground"></div>
-        <div class="speech" id="speech" style="left:48%;">J'arrive !</div>
+<style>
+@keyframes windowLight  { 0%,100%{opacity:0.2} 50%{opacity:0.7} }
+@keyframes borderFlicker{ 0%,100%{opacity:0.15} 50%{opacity:1} }
+@keyframes antennaLight { 0%,100%{opacity:0.3} 50%{opacity:1} }
+@keyframes glow         { 0%,100%{opacity:0.3} 50%{opacity:0.8} }
 
-        <!-- MAISON -->
-        <div class="house" id="house">
-          <svg width="90" height="100" viewBox="0 0 90 100">
-            <polygon points="45,5 5,45 15,45 15,95 75,95 75,45 85,45" fill="none" stroke="#c9a84c" stroke-width="2.5" stroke-linejoin="round"/>
-            <rect x="35" y="65" width="20" height="30" fill="rgba(201,168,76,0.2)" stroke="#c9a84c" stroke-width="1.5"/>
-            <rect x="18" y="52" width="16" height="14" rx="2" fill="rgba(201,168,76,0.15)" stroke="#c9a84c" stroke-width="1.5"/>
-            <rect x="56" y="52" width="16" height="14" rx="2" fill="rgba(201,168,76,0.15)" stroke="#c9a84c" stroke-width="1.5"/>
-          </svg>
-        </div>
+/* Carte vidéo formation */
+.formation-card--video {
+  padding: 0;
+  overflow: hidden;
+  min-height: 420px;
+}
+.fc-body--video {
+  padding: 0;
+  height: 100%;
+  min-height: 420px;
+}
+</style>
+<svg id="sceneSST" viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg"
+     style="background:rgb(13,27,62);border-radius:12px;width:100%;display:block;max-height:300px;">
 
-        <!-- IMMEUBLE -->
-        <div class="building" id="building">
-          <svg width="80" height="110" viewBox="0 0 80 110">
-            <rect x="5" y="20" width="70" height="90" rx="2" fill="none" stroke="#c9a84c" stroke-width="2.5"/>
-            <rect x="0" y="15" width="80" height="8" rx="1" fill="rgba(201,168,76,0.3)" stroke="#c9a84c" stroke-width="1.5"/>
-            <rect x="12" y="30" width="12" height="10" rx="1" fill="rgba(201,168,76,0.15)" stroke="#c9a84c" stroke-width="1"/>
-            <rect x="34" y="30" width="12" height="10" rx="1" fill="rgba(201,168,76,0.15)" stroke="#c9a84c" stroke-width="1"/>
-            <rect x="56" y="30" width="12" height="10" rx="1" fill="rgba(201,168,76,0.15)" stroke="#c9a84c" stroke-width="1"/>
-            <rect x="12" y="50" width="12" height="10" rx="1" fill="rgba(201,168,76,0.15)" stroke="#c9a84c" stroke-width="1"/>
-            <rect x="34" y="50" width="12" height="10" rx="1" fill="rgba(201,168,76,0.15)" stroke="#c9a84c" stroke-width="1"/>
-            <rect x="56" y="50" width="12" height="10" rx="1" fill="rgba(201,168,76,0.15)" stroke="#c9a84c" stroke-width="1"/>
-            <rect x="12" y="70" width="12" height="10" rx="1" fill="rgba(201,168,76,0.2)" stroke="#c9a84c" stroke-width="1"/>
-            <rect x="34" y="70" width="12" height="10" rx="1" fill="rgba(201,168,76,0.15)" stroke="#c9a84c" stroke-width="1"/>
-            <rect x="56" y="70" width="12" height="10" rx="1" fill="rgba(201,168,76,0.15)" stroke="#c9a84c" stroke-width="1"/>
-            <rect x="30" y="85" width="20" height="25" rx="1" fill="rgba(201,168,76,0.2)" stroke="#c9a84c" stroke-width="1.5"/>
-          </svg>
-        </div>
+  <defs>
+    
+  </defs>
 
-        <!-- PERSONNAGE -->
-        <div class="person" id="person">
-          <svg viewBox="0 0 60 90" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <!-- Tête -->
-            <circle cx="30" cy="12" r="10" fill="#e8c96a" stroke="#c9a84c" stroke-width="1.5"/>
-            <!-- Corps -->
-            <rect x="20" y="23" width="20" height="26" rx="4" fill="#1a3060" stroke="#c9a84c" stroke-width="1.5"/>
-            <!-- Croix sur la veste -->
-            <line x1="30" y1="27" x2="30" y2="35" stroke="#e8c96a" stroke-width="2"/>
-            <line x1="26" y1="31" x2="34" y2="31" stroke="#e8c96a" stroke-width="2"/>
-            <!-- Bras gauche -->
-            <rect class="arm-l" x="10" y="24" width="9" height="20" rx="4" fill="#1a3060" stroke="#c9a84c" stroke-width="1.5"/>
-            <!-- Bras droit (tient mallette) -->
-            <rect class="arm-r" x="41" y="24" width="9" height="20" rx="4" fill="#1a3060" stroke="#c9a84c" stroke-width="1.5"/>
-            <!-- Jambe gauche -->
-            <rect class="leg-l" x="21" y="48" width="8" height="22" rx="4" fill="#0f2044" stroke="#c9a84c" stroke-width="1.5"/>
-            <!-- Jambe droite -->
-            <rect class="leg-r" x="31" y="48" width="8" height="22" rx="4" fill="#0f2044" stroke="#c9a84c" stroke-width="1.5"/>
-            <!-- Mallette -->
-            <g class="briefcase">
-              <rect x="44" y="42" width="14" height="11" rx="2" fill="#c9a84c" stroke="#9a7a30" stroke-width="1"/>
-              <line x1="44" y1="47" x2="58" y2="47" stroke="#9a7a30" stroke-width="1"/>
-              <rect x="49" y="39" width="4" height="4" rx="1" fill="none" stroke="#9a7a30" stroke-width="1"/>
-            </g>
-          </svg>
-        </div>
-      </div>
+  <line x1="50" y1="278" x2="650" y2="278" stroke="#c9a227" stroke-width="1.2" opacity="0.35" style="fill:rgb(0, 0, 0);stroke:rgb(201, 162, 39);color:rgb(0, 0, 0);stroke-width:1.2px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.35;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <line x1="195" y1="277" x2="490" y2="277" stroke="#c9a227" stroke-width="1" stroke-dasharray="6,5" opacity="0.22" style="fill:rgb(0, 0, 0);stroke:rgb(201, 162, 39);color:rgb(0, 0, 0);stroke-width:1px;stroke-dasharray:6px, 5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.22;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+  <!-- MAISON -->
+  <g transform="translate(55,125)" style="fill:rgb(0, 0, 0);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">
+    <rect x="5" y="-42" width="100" height="24" rx="4" fill="#c9a227" opacity="0.08" style="fill:rgb(201, 162, 39);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.08;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+    <text x="55" y="-25" text-anchor="middle" font-family="Arial" font-size="10" font-weight="bold" fill="#c9a227" style="fill:rgb(201, 162, 39);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:Arial;font-size:10px;font-weight:700;text-anchor:middle;dominant-baseline:auto">DOMICILE</text>
+    <rect x="5" y="-42" width="100" height="24" rx="4" id="maisonBorder" fill="none" stroke="#c9a227" stroke-width="1.8" style=";fill:none;stroke:rgb(201, 162, 39);color:rgb(0, 0, 0);stroke-width:1.8px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+    <polygon points="55,0 -5,46 115,46" fill="#0d1b3e" stroke="#c9a227" stroke-width="2" style="fill:rgb(13, 27, 62);stroke:rgb(201, 162, 39);color:rgb(0, 0, 0);stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+    <rect x="0" y="42" width="110" height="110" fill="#0d1b3e" stroke="#c9a227" stroke-width="2" style="fill:rgb(13, 27, 62);stroke:rgb(201, 162, 39);color:rgb(0, 0, 0);stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+    <rect x="8" y="55" width="26" height="22" rx="2" fill="#c9a227" opacity="0.3" style="animation: windowLight 3s ease-in-out infinite;;fill:rgb(201, 162, 39);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.776098;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+    <line x1="21" y1="55" x2="21" y2="77" stroke="#c9a227" stroke-width="0.8" opacity="0.6" style="fill:rgb(0, 0, 0);stroke:rgb(201, 162, 39);color:rgb(0, 0, 0);stroke-width:0.8px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.6;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+    <line x1="8" y1="66" x2="34" y2="66" stroke="#c9a227" stroke-width="0.8" opacity="0.6" style="fill:rgb(0, 0, 0);stroke:rgb(201, 162, 39);color:rgb(0, 0, 0);stroke-width:0.8px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.6;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+    <rect x="76" y="55" width="26" height="22" rx="2" fill="#c9a227" opacity="0.3" style="animation: windowLight 3s ease-in-out 1.5s infinite;;fill:rgb(201, 162, 39);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.423902;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+    <line x1="89" y1="55" x2="89" y2="77" stroke="#c9a227" stroke-width="0.8" opacity="0.6" style="fill:rgb(0, 0, 0);stroke:rgb(201, 162, 39);color:rgb(0, 0, 0);stroke-width:0.8px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.6;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+    <line x1="76" y1="66" x2="102" y2="66" stroke="#c9a227" stroke-width="0.8" opacity="0.6" style="fill:rgb(0, 0, 0);stroke:rgb(201, 162, 39);color:rgb(0, 0, 0);stroke-width:0.8px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.6;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+    <rect x="36" y="88" width="38" height="64" rx="3" fill="#c9a227" opacity="0.12" stroke="#c9a227" stroke-width="1.5" style="fill:rgb(201, 162, 39);stroke:rgb(201, 162, 39);color:rgb(0, 0, 0);stroke-width:1.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.12;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+    <ellipse cx="55" cy="152" rx="22" ry="4" fill="#c9a227" style="animation: glow 2.5s ease-in-out infinite;;fill:rgb(201, 162, 39);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.406194;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  </g>
+
+  <!-- ENTREPRISE -->
+  <g transform="translate(473,50)" style="fill:rgb(0, 0, 0);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">
+    <rect x="5" y="0" width="108" height="24" rx="4" fill="#c9a227" opacity="0.08" style="fill:rgb(201, 162, 39);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.08;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+    <text x="59" y="16" text-anchor="middle" font-family="Arial" font-size="10" font-weight="bold" fill="#c9a227" style="fill:rgb(201, 162, 39);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:Arial;font-size:10px;font-weight:700;text-anchor:middle;dominant-baseline:auto">ENTREPRISE</text>
+    <rect x="5" y="0" width="108" height="24" rx="4" id="entBorder" fill="none" stroke="#c9a227" stroke-width="1.8" style=";fill:none;stroke:rgb(201, 162, 39);color:rgb(0, 0, 0);stroke-width:1.8px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+    <line x1="18" y1="52" x2="18" y2="34" stroke="#c9a227" stroke-width="1.5" opacity="0.8" style="fill:rgb(0, 0, 0);stroke:rgb(201, 162, 39);color:rgb(0, 0, 0);stroke-width:1.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.8;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+    <circle cx="18" cy="33" r="3" fill="#c9a227" style="animation: antennaLight 1s ease-in-out infinite;;fill:rgb(201, 162, 39);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.927293;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+    <line x1="12" y1="42" x2="24" y2="42" stroke="#c9a227" stroke-width="1" opacity="0.6" style="fill:rgb(0, 0, 0);stroke:rgb(201, 162, 39);color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.6;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+    <line x1="36" y1="52" x2="36" y2="38" stroke="#c9a227" stroke-width="1.5" opacity="0.8" style="fill:rgb(0, 0, 0);stroke:rgb(201, 162, 39);color:rgb(0, 0, 0);stroke-width:1.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.8;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+    <circle cx="36" cy="37" r="2.5" fill="#c9a227" style="animation: antennaLight 1.3s ease-in-out 0.3s infinite;;fill:rgb(201, 162, 39);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.95668;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+    <rect x="55" y="40" width="18" height="12" rx="2" fill="#0d1b3e" stroke="#c9a227" stroke-width="1.2" opacity="0.9" style="fill:rgb(13, 27, 62);stroke:rgb(201, 162, 39);color:rgb(0, 0, 0);stroke-width:1.2px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.9;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+    <line x1="57" y1="44" x2="71" y2="44" stroke="#c9a227" stroke-width="0.7" opacity="0.5" style="fill:rgb(0, 0, 0);stroke:rgb(201, 162, 39);color:rgb(0, 0, 0);stroke-width:0.7px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.5;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+    <line x1="57" y1="47" x2="71" y2="47" stroke="#c9a227" stroke-width="0.7" opacity="0.5" style="fill:rgb(0, 0, 0);stroke:rgb(201, 162, 39);color:rgb(0, 0, 0);stroke-width:0.7px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.5;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+    <rect x="80" y="40" width="18" height="12" rx="2" fill="#0d1b3e" stroke="#c9a227" stroke-width="1.2" opacity="0.9" style="fill:rgb(13, 27, 62);stroke:rgb(201, 162, 39);color:rgb(0, 0, 0);stroke-width:1.2px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.9;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+    <line x1="82" y1="44" x2="96" y2="44" stroke="#c9a227" stroke-width="0.7" opacity="0.5" style="fill:rgb(0, 0, 0);stroke:rgb(201, 162, 39);color:rgb(0, 0, 0);stroke-width:0.7px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.5;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+    <line x1="82" y1="47" x2="96" y2="47" stroke="#c9a227" stroke-width="0.7" opacity="0.5" style="fill:rgb(0, 0, 0);stroke:rgb(201, 162, 39);color:rgb(0, 0, 0);stroke-width:0.7px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.5;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+    <rect x="103" y="36" width="9" height="16" rx="1" fill="#0d1b3e" stroke="#c9a227" stroke-width="1.2" opacity="0.9" style="fill:rgb(13, 27, 62);stroke:rgb(201, 162, 39);color:rgb(0, 0, 0);stroke-width:1.2px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.9;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+    <rect x="-3" y="52" width="124" height="9" fill="#0d1b3e" stroke="#c9a227" stroke-width="1.5" style="fill:rgb(13, 27, 62);stroke:rgb(201, 162, 39);color:rgb(0, 0, 0);stroke-width:1.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+    <rect x="0" y="60" width="118" height="168" fill="#0d1b3e" stroke="#c9a227" stroke-width="2" style="fill:rgb(13, 27, 62);stroke:rgb(201, 162, 39);color:rgb(0, 0, 0);stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+    <rect x="9" y="72" width="20" height="16" rx="2" fill="#c9a227" opacity="0.3" style="animation: windowLight 2.5s ease-in-out 0s infinite;;fill:rgb(201, 162, 39);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.356194;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+    <rect x="36" y="72" width="20" height="16" rx="2" fill="#c9a227" opacity="0.3" style="animation: windowLight 2.5s ease-in-out 0.5s infinite;;fill:rgb(201, 162, 39);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.582417;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+    <rect x="63" y="72" width="20" height="16" rx="2" fill="#c9a227" opacity="0.3" style="animation: windowLight 2.5s ease-in-out 1s infinite;;fill:rgb(201, 162, 39);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.835588;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+    <rect x="90" y="72" width="20" height="16" rx="2" fill="#c9a227" opacity="0.3" style="animation: windowLight 2.5s ease-in-out 1.5s infinite;;fill:rgb(201, 162, 39);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.768819;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+    <rect x="9" y="98" width="20" height="16" rx="2" fill="#c9a227" opacity="0.3" style="animation: windowLight 3s ease-in-out 0.3s infinite;;fill:rgb(201, 162, 39);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.845631;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+    <rect x="36" y="98" width="20" height="16" rx="2" fill="#c9a227" opacity="0.3" style="animation: windowLight 3s ease-in-out 0.8s infinite;;fill:rgb(201, 162, 39);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.776491;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+    <rect x="63" y="98" width="20" height="16" rx="2" fill="#c9a227" opacity="0.3" style="animation: windowLight 3s ease-in-out 1.3s infinite;;fill:rgb(201, 162, 39);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.51622;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+    <rect x="90" y="98" width="20" height="16" rx="2" fill="#c9a227" opacity="0.3" style="animation: windowLight 3s ease-in-out 1.8s infinite;;fill:rgb(201, 162, 39);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.354369;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+    <rect x="9" y="124" width="20" height="16" rx="2" fill="#c9a227" opacity="0.3" style="animation: windowLight 2.8s ease-in-out 0.6s infinite;;fill:rgb(201, 162, 39);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.396886;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+    <rect x="36" y="124" width="20" height="16" rx="2" fill="#c9a227" opacity="0.3" style="animation: windowLight 2.8s ease-in-out 1.1s infinite;;fill:rgb(201, 162, 39);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.660475;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+    <rect x="63" y="124" width="20" height="16" rx="2" fill="#c9a227" opacity="0.3" style="animation: windowLight 2.8s ease-in-out 1.6s infinite;;fill:rgb(201, 162, 39);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.844974;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+    <rect x="90" y="124" width="20" height="16" rx="2" fill="#c9a227" opacity="0.3" style="animation: windowLight 2.8s ease-in-out 2.1s infinite;;fill:rgb(201, 162, 39);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.765374;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+    <rect x="39" y="148" width="40" height="80" rx="2" fill="#c9a227" opacity="0.1" stroke="#c9a227" stroke-width="1.5" style="fill:rgb(201, 162, 39);stroke:rgb(201, 162, 39);color:rgb(0, 0, 0);stroke-width:1.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+    <line x1="59" y1="148" x2="59" y2="228" stroke="#c9a227" stroke-width="1" opacity="0.5" style="fill:rgb(0, 0, 0);stroke:rgb(201, 162, 39);color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.5;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+    <ellipse cx="59" cy="228" rx="24" ry="5" fill="#c9a227" style="animation: glow 2.5s ease-in-out 1s infinite;;fill:rgb(201, 162, 39);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.885588;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  </g>
+
+  <!-- TEXTES -->
+  <text x="310" y="36" text-anchor="middle" font-family="Arial" font-size="18" font-weight="bold" fill="#c9a227" opacity="0.95" style="fill:rgb(201, 162, 39);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.95;font-family:Arial;font-size:18px;font-weight:700;text-anchor:middle;dominant-baseline:auto">SalvaFormation</text>
+  <text x="310" y="56" text-anchor="middle" font-family="Arial" font-size="11" fill="#c9a227" opacity="0.65" style="fill:rgb(201, 162, 39);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.65;font-family:Arial;font-size:11px;font-weight:400;text-anchor:middle;dominant-baseline:auto">Formateur SST · Île-de-France</text>
+  <line x1="200" y1="66" x2="420" y2="66" stroke="#c9a227" stroke-width="0.8" opacity="0.3" style="fill:rgb(0, 0, 0);stroke:rgb(201, 162, 39);color:rgb(0, 0, 0);stroke-width:0.8px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.3;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <!-- BONHOMME -->
+  <g id="pGroup">
+    <g id="pBody">
+      <circle id="pHead" cx="155" cy="230" r="10" fill="#c9a227"/>
+      <rect x="146" y="241" width="18" height="22" rx="3" fill="#c9a227"/>
+      <line x1="155" y1="244" x2="155" y2="256" stroke="#0d1b3e" stroke-width="2"/>
+      <line x1="148" y1="250" x2="162" y2="250" stroke="#0d1b3e" stroke-width="2"/>
+      <rect id="armL" x="140" y="242" width="10" height="15" rx="4" fill="#c9a227"/>
+      <rect id="armR" x="169" y="242" width="10" height="15" rx="4" fill="#c9a227"/>
+      <rect id="legL" x="146" y="263" width="8" height="16" rx="4" fill="#c9a227"/>
+      <rect id="legR" x="156" y="263" width="8" height="16" rx="4" fill="#c9a227"/>
+    </g>
+    <!-- Bulle J'arrive ! — dans le groupe, se déplace avec le bonhomme -->
+    <g id="bubble" opacity="0">
+      <rect id="bubbleRect" x="121" y="210" width="68" height="20" rx="5"
+            fill="#0d1b3e" stroke="#c9a227" stroke-width="1.5"/>
+      <text id="bubbleTxt" x="155" y="224" text-anchor="middle"
+            font-family="Arial" font-size="9" font-weight="bold" fill="#c9a227">J'arrive !</text>
+    </g>
+  </g>
+
+</svg>
+</div>
 
       <!-- DESCRIPTION -->
       <div class="dep-desc" id="depDesc">
@@ -637,66 +699,117 @@ const io = new IntersectionObserver(entries => {
 document.querySelectorAll('.fade').forEach(el => io.observe(el));
 
 // Animation personnage
-let currentScene = 'entreprise';
 
-function setScene(scene) {
-  if(scene === currentScene) return;
-  currentScene = scene;
-
-  const person = document.getElementById('person');
-  const house = document.getElementById('house');
-  const building = document.getElementById('building');
-  const speech = document.getElementById('speech');
-  const desc = document.getElementById('depDesc');
-  const btns = document.querySelectorAll('.dep-btn');
-
-  // Update buttons
-  btns.forEach(b => b.classList.remove('active'));
-  event.currentTarget.classList.add('active');
-
-  // Hide speech
-  speech.classList.remove('show');
-
-  // Walk animation
-  person.classList.add('walking');
-
-  if(scene === 'domicile') {
-    person.classList.remove('go-right');
-    person.classList.add('go-left');
-    house.classList.add('show');
-    building.classList.remove('show');
-    desc.innerHTML = `<h3>🏠 Intervention à domicile</h3>
-      <p>Je me déplace chez vous avec tout le matériel — mannequin, DAE de formation, supports pédagogiques. Idéal pour la formation GQS en famille ou entre voisins.</p>
-      <span class="tag">50 € / personne · TVA non applicable</span>`;
-  } else {
-    person.classList.remove('go-left');
-    person.classList.add('go-right');
-
-    building.classList.add('show');
-    house.classList.remove('show');
-    desc.innerHTML = `<h3>🏢 Intervention en entreprise</h3>
-      <p>J'interviens dans vos locaux avec tout le matériel pédagogique. Salle de réunion ou atelier — zéro logistique pour vos équipes, formation adaptée à votre secteur.</p>
-      <span class="tag">Val-de-Marne · Île-de-France</span>`;
-  }
-
-  // Stop walking after transition, show speech à la position finale
-  setTimeout(() => {
-    person.classList.remove('walking');
-    // Repositionner la bulle sur le bonhomme arrivé
-    if(scene === "domicile") {
-      speech.style.left = "20%";
-    } else {
-      speech.style.left = "76%";
-    }
-    speech.classList.add('show');
-    setTimeout(() => speech.classList.remove('show'), 2500);
-  }, 1200);
-}
-
-// Init : show building by default
-document.getElementById('building').classList.add('show');
-document.getElementById('person').classList.add('go-right');
 </script>
 
+<script>
+(function(){
+  var X_START = 155, X_END = 455;
+  var T_TOTAL        = 9000;
+  var T_PAUSE_MAI    = 400;
+  var T_WALK1_END    = 3400;
+  var T_BUBBLE1_END  = 3900;
+  var T_HIDE1_END    = 4400;
+  var T_PAUSE_ENT    = 4800;
+  var T_REAPPEAR     = 5200;
+  var T_WALK2_END    = 8200;
+  var T_BUBBLE2_END  = 8700;
+  var T_HIDE2_END    = 9000;
+
+  var pGroup  = document.getElementById('pGroup');
+  var pBody   = document.getElementById('pBody');
+  var armL    = document.getElementById('armL');
+  var armR    = document.getElementById('armR');
+  var legL    = document.getElementById('legL');
+  var legR    = document.getElementById('legR');
+  var bubble  = document.getElementById('bubble');
+  var btnEnt  = document.querySelector('.dep-btn:first-child');
+  var btnDom  = document.querySelector('.dep-btn:last-child');
+  var desc    = document.getElementById('depDesc');
+  var mBorder = document.getElementById('maisonBorder');
+  var eBorder = document.getElementById('entBorder');
+  if(!pGroup) return;
+
+  var startTime = performance.now();
+  var walkPhase = 0;
+
+  function lerp(a,b,t){ return a+(b-a)*t; }
+
+  function animate(now){
+    var e = (now - startTime) % T_TOTAL;
+    var x=X_START, visible=true, showBubble=false, facingRight=true, walking=false;
+
+    if(e < T_PAUSE_MAI){
+      x=X_START;
+
+    } else if(e < T_WALK1_END){
+      x=lerp(X_START,X_END,(e-T_PAUSE_MAI)/(T_WALK1_END-T_PAUSE_MAI));
+      walking=true;
+
+    } else if(e < T_BUBBLE1_END){
+      x=X_END; showBubble=true;
+
+    } else if(e < T_REAPPEAR){
+      x=X_END; visible=false;
+
+    } else if(e < T_WALK2_END){
+      x=lerp(X_END,X_START,(e-T_REAPPEAR)/(T_WALK2_END-T_REAPPEAR));
+      walking=true; facingRight=false;
+
+    } else if(e < T_BUBBLE2_END){
+      x=X_START; showBubble=true; facingRight=false;
+
+    } else {
+      x=X_START; visible=false;
+    }
+
+    // Position
+    pGroup.setAttribute('transform','translate('+(x-X_START)+',0)');
+    pGroup.setAttribute('opacity', visible?'1':'0');
+
+    // Orientation (flip centré sur cx=155)
+    pBody.setAttribute('transform', facingRight
+      ? ''
+      : 'translate(310,0) scale(-1,1)');
+
+    // Marche
+    if(walking){
+      walkPhase += 0.22;
+      var s = Math.sin(walkPhase);
+      legL.setAttribute('transform','rotate('+(s*22)+',150,263)');
+      legR.setAttribute('transform','rotate('+(-s*22)+',160,263)');
+      armL.setAttribute('transform','rotate('+(-s*18)+',145,242)');
+      armR.setAttribute('transform','rotate('+(s*18)+',174,242)');
+    } else {
+      legL.removeAttribute('transform');
+      legR.removeAttribute('transform');
+      armL.removeAttribute('transform');
+      armR.removeAttribute('transform');
+    }
+
+    // Bulle (reste en coords locales, suit le groupe)
+    bubble.setAttribute('opacity', showBubble?'1':'0');
+
+    // Clignotement contours
+    var inEnt = (e>=T_HIDE1_END && e<T_REAPPEAR);
+    var inMai = (e>=T_HIDE2_END || e<T_PAUSE_MAI);
+    if(eBorder) eBorder.style.animation = inEnt ? 'borderFlicker 0.5s ease-in-out infinite' : 'none';
+    if(mBorder) mBorder.style.animation = inMai ? 'borderFlicker 0.5s ease-in-out infinite' : 'none';
+
+    // Boutons
+    if(btnEnt && btnDom){
+      var toEnt = e < T_REAPPEAR;
+      btnEnt.classList.toggle('active', toEnt);
+      btnDom.classList.toggle('active', !toEnt);
+      if(desc) desc.innerHTML = toEnt
+        ? '<h3>\uD83C\uDFE2 Intervention en entreprise<\/h3><p>J\u0027interviens dans vos locaux avec tout le mat\u00E9riel p\u00E9dagogique.<\/p><span class="tag">Val-de-Marne \u00B7 \u00CEle-de-France<\/span>'
+        : '<h3>\uD83C\uDFE0 Intervention \u00E0 domicile<\/h3><p>Je me d\u00E9place chez vous avec tout le mat\u00E9riel \u2014 mannequin, DAE, supports.<\/p><span class="tag">Val-de-Marne \u00B7 \u00CEle-de-France<\/span>';
+    }
+
+    requestAnimationFrame(animate);
+  }
+  requestAnimationFrame(animate);
+})();
+</script>
 </body>
 </html>
